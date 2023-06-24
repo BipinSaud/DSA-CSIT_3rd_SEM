@@ -16,7 +16,7 @@ void display(stack *s);
 int main()
 {
     stack s;
-    s.top = -1; // Initializing the top of the stack
+    s.top = -1;
 
     int element, choice;
     int flag = 1;

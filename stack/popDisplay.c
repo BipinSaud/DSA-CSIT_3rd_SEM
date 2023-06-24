@@ -13,11 +13,12 @@ void display(stack *s);
 int main()
 {
     stack s;
+    s.top = -1; // Initializing the top of the stack
+
     s.items[0] = 1;
     s.items[1] = 2;
     s.items[2] = 3;
-    s.top = -1; // Initializing the top of the stack
-
+    s.top = 2;
     int choice;
     int flag = 1;
 
@@ -26,7 +27,6 @@ int main()
         printf("\n\n Enter your choice");
         printf("\n\n\t 1: Pop the element");
         printf("\n\n\t 2: Display the elements");
-        printf("\n\n\t 3: Exit");
         printf("\n\n\n Enter your choice:\t");
         scanf("%d", &choice);
 
@@ -40,11 +40,7 @@ int main()
             display(&s);
             break;
 
-        case 3:
-            flag = 0;
-            break;
-
-        default:
+              default:
             printf("Enter a valid choice.\n");
         }
     } while (flag);

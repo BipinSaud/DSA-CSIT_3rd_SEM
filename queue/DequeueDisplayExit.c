@@ -27,7 +27,6 @@ int main()
     q.item[2] = 3;
 
     printf("\nMenu for program:");
-    printf("\n1: Delete\n2: Display\n3: Exit\n");
 
     do
     {
@@ -44,9 +43,9 @@ int main()
             display(&q);
             break;
 
-            // case 3:
-            //     exit(0);
-            //     break;
+        case 3:
+            exit(0);
+            break;
 
         default:
             printf("Your choice is wrong\n");

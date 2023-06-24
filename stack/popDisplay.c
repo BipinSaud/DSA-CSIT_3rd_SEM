@@ -13,6 +13,9 @@ void display(stack *s);
 int main()
 {
     stack s;
+    s.items[0] = 1;
+    s.items[1] = 2;
+    s.items[2] = 3;
     s.top = -1; // Initializing the top of the stack
 
     int choice;

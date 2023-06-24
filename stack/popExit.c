@@ -1,4 +1,3 @@
-// Pop Display and Exit
 #include <stdio.h>
 #define MAX 100
 
@@ -16,6 +15,10 @@ int main()
     stack s;
     s.top = -1; // Initializing the top of the stack
 
+    s.items[0] = 1;
+    s.items[1] = 2;
+    s.items[2] = 3;
+    s.top = 2;
     int choice;
     int flag = 1;
 
@@ -32,9 +35,11 @@ int main()
         case 1:
             pop(&s);
             break;
+
         case 2:
             flag = 0;
             break;
+
         default:
             printf("Enter a valid choice.\n");
         }
@@ -48,7 +53,6 @@ void pop(stack *s)
     if (s->top == -1)
     {
         printf("Stack Underflow! Cannot pop element.\n");
-        return;
     }
     else
     {

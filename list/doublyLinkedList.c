@@ -10,11 +10,11 @@ typedef struct Node
     struct Node *prev;
 } Node;
 
-typedef struct LinkedList
+typedef struct Queue
 {
     Node *head;
     int size;
-} LinkedList;
+} Queue;
 
 Node *createNode(int data)
 {
@@ -25,16 +25,16 @@ Node *createNode(int data)
     return newNode;
 }
 
-LinkedList *createLinkedList()
+Queue *createLinkedList()
 {
-    LinkedList *newLinkedList = (LinkedList *)malloc(sizeof(LinkedList));
+    Queue *newLinkedList = (Queue *)malloc(sizeof(Queue));
     newLinkedList->head = NULL;
     newLinkedList->size = 0;
     return newLinkedList;
 }
 
 // insert at the end
-void insertAtTheEnd(LinkedList *list, int data)
+void insertAtTheEnd(Queue *list, int data)
 {
     Node *newNode = createNode(data);
     Node *current = list->head;
@@ -59,7 +59,7 @@ void insertAtTheEnd(LinkedList *list, int data)
 }
 
 // insert at the beginning
-void insertAtTheBeginning(LinkedList *list, int data)
+void insertAtTheBeginning(Queue *list, int data)
 {
     Node *newNode = createNode(data);
     if (list->head == NULL)
@@ -74,7 +74,7 @@ void insertAtTheBeginning(LinkedList *list, int data)
 }
 
 // insert at the given index
-void insertAtTheGivenIndex(LinkedList *list, int data, int index)
+void insertAtTheGivenIndex(Queue *list, int data, int index)
 {
     Node *newNode = createNode(data);
     Node *current = list->head;
@@ -105,7 +105,7 @@ void insertAtTheGivenIndex(LinkedList *list, int data, int index)
 }
 
 // delete at the beginning
-void deleteAtTheBeginning(LinkedList *list)
+void deleteAtTheBeginning(Queue *list)
 {
     if (list->head == NULL)
     {
@@ -120,7 +120,7 @@ void deleteAtTheBeginning(LinkedList *list)
 }
 
 // delete at the end
-void deleteAtTheEnd(LinkedList *list)
+void deleteAtTheEnd(Queue *list)
 {
     if (list->head == NULL)
     {
@@ -138,7 +138,7 @@ void deleteAtTheEnd(LinkedList *list)
 }
 
 // delete at the given index
-void deleteAtTheGivenIndex(LinkedList *list, int index)
+void deleteAtTheGivenIndex(Queue *list, int index)
 {
     if (list->head == NULL)
     {
@@ -173,7 +173,7 @@ void deleteAtTheGivenIndex(LinkedList *list, int index)
 }
 
 // print the list
-void printList(LinkedList *list)
+void printList(Queue *list)
 {
     Node *current = list->head;
     while (current != NULL)
@@ -186,7 +186,7 @@ void printList(LinkedList *list)
 
 int main()
 {
-    LinkedList *list = createLinkedList();
+    Queue *list = createLinkedList();
     int choice, data, index;
 
     do

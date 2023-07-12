@@ -10,11 +10,11 @@ typedef struct Node
     struct Node *next;
 } Node;
 
-typedef struct LinkedList
+typedef struct Queue
 {
     Node *head;
     int size;
-} LinkedList;
+} Queue;
 
 Node *createNode(int data)
 {
@@ -24,16 +24,16 @@ Node *createNode(int data)
     return newNode;
 }
 
-LinkedList *createLinkedList()
+Queue *createLinkedList()
 {
-    LinkedList *newLinkedList = (LinkedList *)malloc(sizeof(LinkedList));
+    Queue *newLinkedList = (Queue *)malloc(sizeof(Queue));
     newLinkedList->head = NULL;
     newLinkedList->size = 0;
     return newLinkedList;
 }
 
 // insert at the end
-void insert(LinkedList *list, int data)
+void insert(Queue *list, int data)
 {
     Node *newNode = createNode(data);
     if (list->head == NULL)
@@ -53,7 +53,7 @@ void insert(LinkedList *list, int data)
 }
 
 // insert at the beginning
-void insertAtBeginning(LinkedList *list, int data)
+void insertAtBeginning(Queue *list, int data)
 {
     Node *newNode = createNode(data);
     if (list->head == NULL)
@@ -69,7 +69,7 @@ void insertAtBeginning(LinkedList *list, int data)
 }
 
 // find the data
-bool find(LinkedList *list, int data)
+bool find(Queue *list, int data)
 {
     for (int i = 0; i < list->size; i++)
     {
@@ -82,7 +82,7 @@ bool find(LinkedList *list, int data)
 }
 
 // retrieve the data
-int retrieve(LinkedList *list, int index)
+int retrieve(Queue *list, int index)
 {
     if (index < 0 || index >= list->size)
     {
@@ -98,7 +98,7 @@ int retrieve(LinkedList *list, int index)
 }
 
 // delete the data
-void deleteLastItem(LinkedList *list)
+void deleteLastItem(Queue *list)
 {
     if (list->head == NULL)
     {
@@ -120,7 +120,7 @@ void deleteLastItem(LinkedList *list)
     list->size--;
 }
 
-void deleteFirstItem(LinkedList *list)
+void deleteFirstItem(Queue *list)
 {
     if (list->head == NULL)
     {
@@ -134,7 +134,7 @@ void deleteFirstItem(LinkedList *list)
     list->size--;
 }
 
-void display(LinkedList *list)
+void display(Queue *list)
 {
     Node *current = list->head;
     for (int i = 0; i < list->size; i++)
@@ -144,12 +144,12 @@ void display(LinkedList *list)
     }
 }
 
-int getSize(LinkedList *list)
+int getSize(Queue *list)
 {
     return list->size;
 }
 
-void insertAtIndex(LinkedList *list, int index, int data)
+void insertAtIndex(Queue *list, int index, int data)
 {
     if (index < 0 || index > list->size)
     {
@@ -181,7 +181,7 @@ void insertAtIndex(LinkedList *list, int index, int data)
 
 int main()
 {
-    LinkedList *list = createLinkedList();
+    Queue *list = createLinkedList();
     int choice, data, index;
 
     while (1)
@@ -203,7 +203,7 @@ int main()
             scanf("%d", &data);
             insertAtBeginning(list, data);
             break;
-        
+
         case 3:
             printf("Enter the data to insert: ");
             scanf("%d", &data);

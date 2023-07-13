@@ -10,11 +10,11 @@ typedef struct Node
     struct Node *prev;
 } Node;
 
-typedef struct Queue
+typedef struct LinkedList
 {
     Node *head;
     int size;
-} Queue;
+} LinkedList;
 
 Node *createNode(int data)
 {
@@ -25,16 +25,16 @@ Node *createNode(int data)
     return newNode;
 }
 
-Queue *createLinkedList()
+LinkedList *createLinkedList()
 {
-    Queue *newLinkedList = (Queue *)malloc(sizeof(Queue));
+    LinkedList *newLinkedList = (LinkedList *)malloc(sizeof(LinkedList));
     newLinkedList->head = NULL;
     newLinkedList->size = 0;
     return newLinkedList;
 }
 
 // insert at the end
-void insertAtTheEnd(Queue *list, int data)
+void insertAtTheEnd(LinkedList *list, int data)
 {
     Node *newNode = createNode(data);
     Node *current = list->head;
@@ -59,7 +59,7 @@ void insertAtTheEnd(Queue *list, int data)
 }
 
 // insert at the beginning
-void insertAtTheBeginning(Queue *list, int data)
+void insertAtTheBeginning(LinkedList *list, int data)
 {
     Node *newNode = createNode(data);
     if (list->head == NULL)
@@ -74,7 +74,7 @@ void insertAtTheBeginning(Queue *list, int data)
 }
 
 // insert at the given index
-void insertAtTheGivenIndex(Queue *list, int data, int index)
+void insertAtTheGivenIndex(LinkedList *list, int data, int index)
 {
     Node *newNode = createNode(data);
     Node *current = list->head;
@@ -105,7 +105,7 @@ void insertAtTheGivenIndex(Queue *list, int data, int index)
 }
 
 // delete at the beginning
-void deleteAtTheBeginning(Queue *list)
+void deleteAtTheBeginning(LinkedList *list)
 {
     if (list->head == NULL)
     {
@@ -120,7 +120,7 @@ void deleteAtTheBeginning(Queue *list)
 }
 
 // delete at the end
-void deleteAtTheEnd(Queue *list)
+void deleteAtTheEnd(LinkedList *list)
 {
     if (list->head == NULL)
     {
@@ -138,7 +138,7 @@ void deleteAtTheEnd(Queue *list)
 }
 
 // delete at the given index
-void deleteAtTheGivenIndex(Queue *list, int index)
+void deleteAtTheGivenIndex(LinkedList *list, int index)
 {
     if (list->head == NULL)
     {
@@ -173,7 +173,7 @@ void deleteAtTheGivenIndex(Queue *list, int index)
 }
 
 // print the list
-void printList(Queue *list)
+void printList(LinkedList *list)
 {
     Node *current = list->head;
     while (current != NULL)
@@ -186,7 +186,7 @@ void printList(Queue *list)
 
 int main()
 {
-    Queue *list = createLinkedList();
+    LinkedList *list = createLinkedList();
     int choice, data, index;
 
     do

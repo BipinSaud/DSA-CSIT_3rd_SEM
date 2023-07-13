@@ -166,3 +166,52 @@ void display(CircularLinkedList *list)
     }
     printf("%d\n", current->data);
 }
+
+int main()
+{
+    CircularLinkedList *list = createLinkedList();
+    int choice, data;
+    while (1)
+    {
+        printf("1. Insert at the end\n");
+        printf("2. Insert at the beginning\n");
+        printf("3. Delete at the end\n");
+        printf("4. Delete at the beginning\n");
+        printf("5. Display\n");
+        printf("6. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("Enter data: ");
+            scanf("%d", &data);
+            insertAtTheEnd(list, data);
+            break;
+        case 2:
+            printf("Enter data: ");
+            scanf("%d", &data);
+            insertAtTheBeginning(list, data);
+            break;
+        case 3:
+            deleteAtTheEnd(list);
+            break;
+        case 4:
+            deleteAtTheBeginning(list);
+            break;
+        case 5:
+            display(list);
+            break;
+        case 6:
+            exit(0);
+        default:
+            printf("Invalid choice\n");
+            break;
+        }
+        printf("\n");
+        printf(("list:"));
+        display(list);
+        printf("\n");
+    }
+    return 0;
+}

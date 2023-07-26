@@ -1,70 +1,83 @@
-// merge sort
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-#define MAX 100000
-
-void merge(int arr[], int l, int m, int r);
-void mergeSort(int arr[], int l, int r);
-
-int main()
+// Merge two sorted subarrays into one sorted array
+void merge(int arr[], int left, int middle, int right)
 {
-    int arr[MAX], i, n;
-    printf("Enter total number of elements:");
-    scanf("%d", &n);
-    printf("Enter the elements:\n");
-    for (i = 0; i < n; i++)
-    {
-        scanf("%d", &arr[i]);
-    }
-    mergeSort(arr, 0, n - 1);
-    printf("After merge sorting elements are: ");
-    for (i = 0; i < n; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    return 0;
-}
+    int n1 = middle - left + 1;
+    int n2 = right - middle;
 
-void merge(int arr[], int l, int m, int r)
-{
-    int tmp[MAX];
-    int i, j, k;
-    j = m + 1;
-    for (i = l; i <= m && j <= r;)
+    int leftArr[n1], rightArr[n2];
+
+    for (int i = 0; i < n1; i++)
+        leftArr[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        rightArr[j] = arr[middle + 1 + j];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2)
     {
-        if (arr[i] <= arr[j])
+        if (leftArr[i] <= rightArr[j])
         {
-            tmp[k++] = arr[i++];
+            arr[k] = leftArr[i];
+            i++;
         }
         else
         {
-            tmp[k++] = arr[j++];
+            arr[k] = rightArr[j];
+            j++;
         }
+        k++;
     }
-    while (i <= m)
+
+    while (i < n1)
     {
-        tmp[k++] = arr[i++];
+        arr[k] = leftArr[i];
+        i++;
+        k++;
     }
-    while (j <= r)
+
+    while (j < n2)
     {
-        tmp[k++] = arr[j++];
-    }
-    for (i = l, j = 0; i <= r; i++, j++)
-    {
-        arr[i] = tmp[j];
+        arr[k] = rightArr[j];
+        j++;
+        k++;
     }
 }
 
-void mergeSort(int arr[], int l, int r)
+// Merge Sort function
+void mergeSort(int arr[], int left, int right)
 {
-    int m;
-    if (l < r)
+    if (left < right)
     {
-        m = (l + r) / 2;
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-        merge(arr, l, m, r);
+        int middle = left + (right - left) / 2;
+        mergeSort(arr, left, middle);
+        mergeSort(arr, middle + 1, right);
+        merge(arr, left, middle, right);
     }
+}
+
+// Test the Merge Sort algorithm
+int main()
+{
+    int totalNumbers;
+    printf("Enter the total number of elements: ");
+    scanf("%d", &totalNumbers);
+    int arr[totalNumbers];
+
+    for (int i = 0; i < totalNumbers; i++)
+        arr[i] = rand() % 100;
+
+    printf("Original array: \n");
+    for (int i = 0; i < totalNumbers; i++)
+        printf("%d ", arr[i]);
+
+    mergeSort(arr, 0, totalNumbers - 1);
+
+    printf("\nSorted array: \n");
+    for (int i = 0; i < totalNumbers; i++)
+        printf("%d ", arr[i]);
+
+    return 0;
 }

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-// Merge two sorted subarrays into one sorted array
 void merge(int arr[], int left, int middle, int right)
 {
     int n1 = middle - left + 1;

@@ -99,16 +99,6 @@ void insertionSort(int *arr, int size)
         arr[j + 1] = temp;
     }
 }
-void quickSort(int *arr, int low, int high)
-{
-    if (low < high)
-    {
-        int pivot = partition(arr, low, high);
-        quickSort(arr, low, pivot - 1);
-        quickSort(arr, pivot + 1, high);
-    }
-}
-
 int partition(int *arr, int low, int high)
 {
     int pivot = arr[high];
@@ -128,6 +118,15 @@ int partition(int *arr, int low, int high)
     arr[high] = temp;
 
     return i + 1;
+}
+void quickSort(int *arr, int low, int high)
+{
+    if (low < high)
+    {
+        int pivot = partition(arr, low, high);
+        quickSort(arr, low, pivot - 1);
+        quickSort(arr, pivot + 1, high);
+    }
 }
 
 void merge(int arr[], int left, int middle, int right)
@@ -218,46 +217,90 @@ int main()
     for (int i = 0; i < totalNumbers; i++)
         arr[i] = rand() % 100;
 
-    printf("Original array: \n");
-    for (int i = 0; i < totalNumbers; i++)
-        printf("%d ", arr[i]);
-
-    int choice;
-    printf("\n1. Bubble Sort\n2. Selection Sort\n3. Insertion Sort\n4. Quick Sort\n5. Merge Sort\n6. Shell Sort\n7. Heap Sort\n");
-    printf("Enter your choice: ");
-    scanf("%d", &choice);
-
-    switch (choice)
+    int choice = 0;
+    while (choice != 8)
     {
-    case 1:
-        bubbleSort(arr, totalNumbers);
-        break;
-    case 2:
-        selectionSort(arr, totalNumbers);
-        break;
-    case 3:
-        insertionSort(arr, totalNumbers);
-        break;
-    case 4:
-        quickSort(arr, 0, totalNumbers - 1);
-        break;
-    case 5:
-        mergeSort(arr, 0, totalNumbers - 1);
-        break;
-    case 6:
-        shellSort(arr, totalNumbers);
-        break;
-    case 7:
-        heapSort(arr, totalNumbers);
-        break;
-    default:
-        printf("Invalid choice\n");
-        break;
+
+        printf("\n1. Bubble Sort\n2. Selection Sort\n3. Insertion Sort\n4. Quick Sort\n5. Merge Sort\n6. Shell Sort\n7. Heap Sort\n8. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        int bubbleArray[totalNumbers];
+        int selectionArray[totalNumbers];
+        int insertionArray[totalNumbers];
+        int quickArray[totalNumbers];
+        int mergeArray[totalNumbers];
+        int shellArray[totalNumbers];
+        int heapArray[totalNumbers];
+
+        switch (choice)
+        {
+        case 1:
+            for (int i = 0; i < totalNumbers; i++)
+                bubbleArray[i] = rand() % 100;
+            printf("\nOriginal array: \n");
+            printArray(bubbleArray, totalNumbers);
+            bubbleSort(bubbleArray, totalNumbers);
+            printf("\nSorted array: \n");
+            printArray(bubbleArray, totalNumbers);
+            break;
+        case 2:
+            for (int i = 0; i < totalNumbers; i++)
+                selectionArray[i] = rand() % 100;
+            printf("\nOriginal array: \n");
+            printArray(selectionArray, totalNumbers);
+            selectionSort(selectionArray, totalNumbers);
+            printf("\nSorted array: \n");
+            printArray(selectionArray, totalNumbers);
+            break;
+        case 3:
+            for (int i = 0; i < totalNumbers; i++)
+                insertionArray[i] = rand() % 100;
+            printf("\nOriginal array: \n");
+            printArray(insertionArray, totalNumbers);
+            insertionSort(insertionArray, totalNumbers);
+            printf("\nSorted array: \n");
+            printArray(insertionArray, totalNumbers);
+            break;
+        case 4:
+            for (int i = 0; i < totalNumbers; i++)
+                quickArray[i] = rand() % 100;
+            printf("\nOriginal array: \n");
+            printArray(quickArray, totalNumbers);
+            quickSort(quickArray, 0, totalNumbers - 1);
+            printf("\nSorted array: \n");
+            printArray(quickArray, totalNumbers);
+            break;
+        case 5:
+            for (int i = 0; i < totalNumbers; i++)
+                mergeArray[i] = rand() % 100;
+            mergeSort(mergeArray, 0, totalNumbers - 1);
+            break;
+        case 6:
+            for (int i = 0; i < totalNumbers; i++)
+                shellArray[i] = rand() % 100;
+            printf("\nOriginal array: \n");
+            printArray(shellArray, totalNumbers);
+            shellSort(shellArray, totalNumbers);
+            printf("\nSorted array: \n");
+            printArray(shellArray, totalNumbers);
+            break;
+        case 7:
+            for (int i = 0; i < totalNumbers; i++)
+                heapArray[i] = rand() % 100;
+            printf("\nOriginal array: \n");
+            printArray(heapArray, totalNumbers);
+            heapSort(heapArray, totalNumbers);
+            printf("\nSorted array: \n");
+            printArray(heapArray, totalNumbers);
+            break;
+        case 8:
+            exit(0);
+            break;
+        default:
+            printf("Invalid choice\n");
+            break;
+        }
     }
-
-    printf("\nSorted array: \n");
-    for (int i = 0; i < totalNumbers; i++)
-        printf("%d ", arr[i]);
-
     return 0;
 }

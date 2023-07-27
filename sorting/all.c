@@ -212,11 +212,6 @@ int main()
     int totalNumbers;
     printf("Enter the total number of elements: ");
     scanf("%d", &totalNumbers);
-    int arr[totalNumbers];
-
-    for (int i = 0; i < totalNumbers; i++)
-        arr[i] = rand() % 100;
-
     int choice = 0;
     while (choice != 8)
     {

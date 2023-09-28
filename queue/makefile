@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall
 
 # List all your C source files here
-SOURCES=circularQueueComplete.c enqueueDisplayExit.c dequeueDisplayExit.c linearQueueComplete.c
+SOURCES=circularQueueComplete.c EnqueueDisplayExit.c DequeueDisplayExit.c linearQueueComplete.c
 
 # Generate the names of the object files
 OBJECTS=$(SOURCES:.c=.o)

@@ -30,3 +30,39 @@ int main()
     printf("index = %d\n", index);          // print the index of the key in the array
     return 0;                               // return 0 to indicate successful execution
 }
+
+// - The data must be sorted
+// - Find mid-index / mid-element (lowindex+highindex/2)
+// arrSize = 10
+// Int highindex = arrSize-1
+
+int binary_search(int *arr, int arrSize, int searchGarnuPArneItem)
+{
+    int low, high, mid;
+    low = 0;
+    high = arrSize - 1;
+    while (low <= high)
+    {
+        mid = (low + high) / 2;
+        if (searchGarnuPArneItem < arr[mid])
+            high = mid - 1;
+        else if (searchGarnuPArneItem > arr[mid])
+            low = mid + 1;
+        else
+            return mid;
+    }
+}
+
+
+// sequential search
+
+// algorithm for sequential search
+// 1. start from the first element of the array
+// 2. compare the key with the current element
+// 3. if the key is equal to the current element, return the index of the current element
+// 4. if the key is not equal to the current element, move to the next element
+
+int sequential(int *arr, int size, int key){
+    
+    
+}
